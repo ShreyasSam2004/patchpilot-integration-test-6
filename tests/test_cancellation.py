@@ -9,6 +9,18 @@ def test_cancellation_well_before_checkin_gets_full_refund():
     assert calculate_refund(Decimal("1200.00"), 10) == Decimal("1200.00")
 
 
+def test_cancellation_exactly_seven_days_before_gets_full_refund():
+    assert calculate_refund(Decimal("1200.00"), 7) == Decimal("1200.00")
+
+
+def test_cancellation_six_days_before_gets_half_refund():
+    assert calculate_refund(Decimal("1200.00"), 6) == Decimal("600.00")
+
+
+def test_cancellation_two_days_before_gets_half_refund():
+    assert calculate_refund(Decimal("1200.00"), 2) == Decimal("600.00")
+
+
 def test_cancellation_three_days_before_gets_half_refund():
     assert calculate_refund(Decimal("1200.00"), 3) == Decimal("600.00")
 
