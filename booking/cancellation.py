@@ -19,7 +19,7 @@ def calculate_refund(
     if days_before_checkin < 0:
         raise ValueError("days before check-in cannot be negative")
 
-    if days_before_checkin > 7:
+    if days_before_checkin >= 7:
         refund_rate = Decimal("1.00")
     elif days_before_checkin >= 2:
         refund_rate = Decimal("0.50")
